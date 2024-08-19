@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Object Manipulation</title>
+    <style>
+        body {
+            background-color: lightyellow;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .object-manipulation {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        input {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="object-manipulation">
+        <h2>Object Manipulation</h2>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" required>
+        
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" required>
+        
+        <label for="age">Age:</label>
+        <input type="number" id="age" required>
+        
+        <button onclick="createPerson()">Create Person</button>
+        <p id="personResult"></p>
+        
+        <button onclick="incrementAge()">Increment Age</button>
+        <p id="ageResult"></p>
+    </div>
+
+    <script>
+        let person = null;
+
+        function createPerson() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const age = parseInt(document.getElementById('age').value);
+
+            person = {
+                firstName: firstName,
+                lastName: lastName,
+                age: age,
+                getFullName: function() {
+                    return `${this.firstName} ${this.lastName}`;
+                },
+                incrementAge: function() {
+                    this.age += 1;
+                }
+            };
+
+            document.getElementById('personResult').textContent = `Person Created: ${person.getFullName()}, Age: ${person.age}`;
+        }
+
+        function incrementAge() {
+            if (person) {
+                person.incrementAge();
+                document.getElementById('ageResult').textContent = `New Age: ${person.age}`;
+            } else {
+                document.getElementById('ageResult').textContent = 'Please create a person first.';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2: Array Operations</title>
+    <style>
+        body {
+            background-color: gray;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .array-operations {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        input {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="array-operations">
+        <h2> Array Operations</h2>
+        <label for="arrayInput">Enter numbers:</label>
+        <input type="text" id="arrayInput" required>
+        <button onclick="sumEvenNumbers()">Sum Even Numbers</button>
+        <p id="arrayResult"></p>
+    </div>
+
+    <script>
+        function sumEvenNumbers() {
+            const arrayInput = document.getElementById('arrayInput').value;
+            const numbers = arrayInput.split(',').map(Number);
+            let sum = 0;
+
+            numbers.forEach(num => {
+                if (num % 2 === 0) {
+                    sum += num;
+                }
+            });
+
+            document.getElementById('arrayResult').textContent = `Sum of Even Numbers: ${sum}`;
+        }
+    </script>
+</body>
+</html>
